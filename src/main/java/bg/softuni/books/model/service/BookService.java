@@ -6,7 +6,6 @@ import bg.softuni.books.model.entity.BookEntity;
 import bg.softuni.books.model.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Book;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -39,6 +38,6 @@ public class BookService {
                 .setId(bookEntity.getId())
                 .setTitle(bookEntity.getTitle())
                 .setIsbn(bookEntity.getIsbn())
-                .setAuthorDTO(new AuthorDTO().setName(bookEntity.getAuthor().getName()));
+                .setAuthor(new AuthorDTO().setName(bookEntity.getAuthor().getName()));
     }
 }

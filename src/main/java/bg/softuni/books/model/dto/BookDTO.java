@@ -5,7 +5,7 @@ public class BookDTO {
     private Long id;
     private String title;
     private String isbn;
-    private AuthorDTO authorDTO;
+    private AuthorDTO author;
 
     public Long getId() {
         return id;
@@ -34,12 +34,12 @@ public class BookDTO {
         return this;
     }
 
-    public AuthorDTO getAuthorDTO() {
-        return authorDTO;
+    public AuthorDTO getAuthor() {
+        return author;
     }
 
-    public BookDTO setAuthorDTO(AuthorDTO authorDTO) {
-        this.authorDTO = authorDTO;
+    public BookDTO setAuthor(AuthorDTO author) {
+        this.author = author;
         return this;
     }
 }
