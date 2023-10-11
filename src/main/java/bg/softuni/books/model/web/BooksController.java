@@ -3,10 +3,8 @@ package bg.softuni.books.model.web;
 import bg.softuni.books.model.dto.BookDTO;
 import bg.softuni.books.model.service.BookService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 import java.util.Optional;
@@ -40,7 +38,26 @@ public class BooksController {
             return ResponseEntity
                     .ok(bookOpt.get());
         }
+    }
 
+    @PostMapping
+    public ResponseEntity<BookDTO> createBook(@RequestBody BookDTO newBook,
+                                              UriComponentsBuilder uriComponentsBuilder) {
+        Long newBookId = this.bookService.createBook(newBook);
+
+        return ResponseEntity
+                .created(uriComponentsBuilder.path("/api/books/{id}").build(newBookId))
+                .build();
+
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<BookDTO> deleteBookById(@PathVariable("id") Long bookId) {
+        this.bookService.deleteById(bookId);
+
+        return ResponseEntity
+                .noContent()
+                .build();
     }
 
 }

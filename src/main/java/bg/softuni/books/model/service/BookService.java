@@ -40,4 +40,14 @@ public class BookService {
                 .setIsbn(bookEntity.getIsbn())
                 .setAuthor(new AuthorDTO().setName(bookEntity.getAuthor().getName()));
     }
+
+    public void deleteById(Long bookId) {
+        this.bookRepository.deleteById(bookId);
+    }
+
+    public Long createBook(BookDTO newBook) {
+        // TODO: implement method.
+
+        return 50L;
+    }
 }
